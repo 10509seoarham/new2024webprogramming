@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>숫자 맞추기 게임</title>
+    <meta charset="UTF-8">
+    <script>
+        let num = Math.floor(Math.random() * 100);
+        var count=0;
+        function quiz() {
+            count++;
+            //랜덤 숫자 1~99(출처 T스토리)
+            let you = parseInt(document.getElementById("num").value);
+            
+            if (you > num) {
+                //업
+                document.getElementById("ans").innerHTML = "down";
+                
+            } else if (you < num) {
+                //다운
+                document.getElementById("ans").innerHTML = "up";
+                
+            } else if (you === num) {
+                //맞춤
+                document.getElementById("ans").innerHTML = "clear, page reset";
+                //3초 뒤 초기화(출처 T스토리)
+                setTimeout(function() {location.reload(true)}, 3000);
+            }
+            document.getElementById("try").innerHTML = "try count:"+count;
+        }
+    </script>
+</head>
+<body>
+    <h1>number up N down quiz</h1>
+    <p>number range:1~100</p>
+    <input type="number" name="quiz" id="num">
+    <input type="button" value="click" onclick="quiz()">
+    <p id="ans"></p>
+    <p id="try"></p>
+</body>
+</html>
